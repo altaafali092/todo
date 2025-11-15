@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 const Form = ({ onAddTodo }) => {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("")
 
   const handleTitle = (value) => {
-    setTitle(value);
+    setTitle(value)
   };
 
   const handleSubmit = (e) => {

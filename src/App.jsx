@@ -9,16 +9,24 @@ const App = () => {
   const [task, setTask] = useState([]);
 
   const handleSubmit = (title) => {
+//  const {id,content,checked}= title
  
- 
-    if (!title) return;
+ if(!title) return
+    // if (!content) return;
+
     if (task.includes(title)) {
 
-      setTitle("");
+      // setTitle("");
       return;
     }
 
+    // const ifTodoMatched=task.find((curItem)=>{
+    //   curItem.content === content
+    // })
+    // if(!ifTodoMatched) return;
+
     setTask((prev) => [...prev, title]);
+    console.log(task)
  
   };
 
