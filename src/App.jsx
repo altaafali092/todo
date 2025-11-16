@@ -14,6 +14,7 @@ const App = () => {
     const rawTodo =localStorage.getItem(reactDb);
     if(!rawTodo) return [];
     return JSON.parse(rawTodo);
+    
   });
 
  
