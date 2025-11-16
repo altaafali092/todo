@@ -3,11 +3,20 @@ import React from "react";
 import { useState } from "react";
 import Form from "./components/Form";
 import List from "./components/List";
+import Db from "./components/Db";
 
 const App = () => {
-  const [task, setTask] = useState([]);
 
-  // console.log(task);
+  const reactDb ="reacttodo"
+
+  const [task, setTask] = useState(()=>{
+
+    const rawTodo =localStorage.getItem(reactDb);
+    if(!rawTodo) return [];
+    return JSON.parse(rawTodo);
+  });
+
+ 
 
   const handleSubmit = (title) => {
     const { id, content, checked } = title;
@@ -21,6 +30,8 @@ const App = () => {
     setTask((prev) => [...prev,{id,content, checked}]);
     console.log(task);
   };
+
+  localStorage.setItem(reactDb,JSON.stringify(task))
 
   const handleDelte = (value) => {
     console.log(value);
@@ -38,6 +49,7 @@ const App = () => {
     setTask(update)
   }
   
+
   
   const deleteAll = () => {
     setTask([]);
@@ -45,6 +57,7 @@ const App = () => {
 
   return (
     <>
+   
       <div className="text-white h-screen text-center bg-gray-600">
         <h1 className="text-5xl pt-10  text-white">Todo</h1>
 
