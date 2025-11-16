@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 
 const Form = ({ onAddTodo }) => {
-  const [title, setTitle] = useState("")
+  const [title, setTitle] = useState({})
 
   const handleTitle = (value) => {
-    setTitle(value)
+    setTitle({id:value,content:value,checked:false})
+  
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddTodo(title);
     
-    setTitle("");
+    setTitle({id:"",content:"",checked:false});
   };
 
   return (
@@ -20,7 +21,7 @@ const Form = ({ onAddTodo }) => {
         <input
           type="text"
           placeholder="Enter Title"
-          value={title}
+          value={title.content ||""}
           onChange={(e) => handleTitle(e.target.value)}
           className="bg-white text-black py-2 px-10 rounded-full"
         />
